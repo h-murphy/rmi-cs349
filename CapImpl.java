@@ -8,7 +8,7 @@ public class CapImpl implements Capitalize {
   
   static String[] usernames = new String[10];
   static int numUsers = 0;
-  static String user = "";
+  private static String user = "";
   
   public CapImpl() { }
   
@@ -65,12 +65,25 @@ public class CapImpl implements Capitalize {
     return input;
   }
   
+  public void sendMessageToClient(String message){
+    System.out.println(message);
+  }
+  
   public String sendMessage(String userTo, String message){
     try{
       if(checkIfUserExists(userTo)){
+        
+        //CapImpl obj = new CapImpl();
+        //Capitalize newStub = (Capitalize) UnicastRemoteObject.exportObject(obj, 0);
         Registry registry = LocateRegistry.getRegistry();
-        Capitalize stub = (Capitalize) registry.lookup(userTo);
-        //String 
+        //registry.bind(userTo, newStub);
+        Capitalize newStub = (Capitalize) registry.lookup(userTo);
+        //System.out.println("new stub " + newStub.toString());
+        //System.out.println("old stub " + stub.toString());
+       
+        String messageText = user +  ": " + message;
+        
+        newStub.sendMessageToClient(messageText);
       }else{
         System.out.println("User does not exist.");
       }

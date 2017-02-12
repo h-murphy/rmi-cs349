@@ -6,4 +6,5 @@ public interface Capitalize extends Remote {
     String prettyPrint() throws RemoteException;  
     String registerNewUser(String input) throws RemoteException;  
     String sendMessage(String userTo, String message) throws RemoteException;
+    void sendMessageToClient(String message) throws RemoteException;
 }

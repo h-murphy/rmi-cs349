@@ -43,6 +43,15 @@ public class CapClient {
           }else if(command.equals("quit")){
             active = false;
             System.out.println("Quitting Session");
+          }else if(command.substring(0,3).equals("snd")){
+            String userTo = command.substring(command.indexOf('-')+1, command.lastIndexOf('-'));
+            System.out.println(userTo);
+            String message = command.substring(command.lastIndexOf('-') + 1);
+     
+            System.out.println(message);
+            
+            String value = stub.sendMessage(userTo, message);
+            System.out.println(value);
           }
           
         //}
