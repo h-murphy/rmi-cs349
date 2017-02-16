@@ -1,3 +1,9 @@
+/*
+ * Hannah Murphy & Anna M. Pfoertsch
+ * CS349a Assignment 2
+ * Server Class
+ */
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
